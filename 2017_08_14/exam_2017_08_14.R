@@ -50,6 +50,20 @@ q2_b <- function() {
 }
 
 
-q3_a <- function () {
-  
+q3_b <- function () {
+  file_path <- paste0(getwd(),'/Dev/R/old_r_exams/2017_08_14/robot.txt')
+  robot_txt <- readLines(con=file_path)
+  print(robot_txt)
+  str_detect(robot_txt, '\\Wthe\\W')
+}
+
+q3_c <- function () {
+  vote_right_date <- ymd("1919-5-24")
+  second_date <- ymd("1921-12-09")
+  poland_date <- ymd("1918-11-28")
+  todays_date <- ymd("2018-03-22")
+  i  <-  wday(vote_right_date,label = TRUE)
+  ii <-  days(second_date - vote_right_date)
+  iii <- floor(days(second_date - poland_date)@day / 7)
+  iv <- as.period(interval(vote_right_date, todays_date), unit = 'month')
 }
