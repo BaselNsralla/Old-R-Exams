@@ -85,11 +85,12 @@ my_curve <- function (x, a=3) {
 
 curve(expr= my_curve, from = -3, to = 3)
 
+my_var(x=1:100)
 my_var <- function (x) {
   sum <- 0
   m <- mean(x)
   for (i in x) {
     sum <- sum + (i-m)^2
   }
-  return(sum)
+  return((1/(length(x)-1))*sum)
 }
