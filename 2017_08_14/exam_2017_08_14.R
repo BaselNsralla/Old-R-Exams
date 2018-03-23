@@ -1,6 +1,6 @@
 library('stringr')
 library('lubridate')
-
+library("ggplot2")
 
 q1_a <- function (a, b){
   return((factorial(a)-b^a)^-0.1)
@@ -9,6 +9,7 @@ q1_a <- function (a, b){
 q1_b <- function() {
   data(OrchardSprays)
   my_df <- data.frame()
+  index <- seq(1, dim(my_df)[1], 2)
   a <- as.numeric(row.names.data.frame(OrchardSprays))
   my_df <- OrchardSprays[a%%2 != 0, 1:2]
   return(my_df)
@@ -21,6 +22,8 @@ q1_c <- function() {
 
 q1_d <- function() {
   m <- matrix(c(1,2,3,2,1), nrow=5, ncol = 3)
+  rownames(m) <- c('w', 'a', 'r', 'y', 'f')
+  return(m)
 }
 
 
@@ -77,9 +80,9 @@ my_curve <- function (x, a=3) {
     } else if(x > -2 && x < 1) {
       return(num^2)
     } else {
-      return(6-(a*num))
+      return(6-a*num)
     }
-  }, simplify=TRUE)
+  })
   return(m)
 }
 
@@ -93,4 +96,17 @@ my_var <- function (x) {
     sum <- sum + (i-m)^2
   }
   return((1/(length(x)-1))*sum)
+}
+
+irist_plot <- function () {
+  data(iris)
+  ggplot(iris, aes(x = iris$Sepal.Length, y = iris$Sepal.Width)) + geom_point(aes(color=Species), shape=2)
+}
+
+last_q <- function () {
+  tt <- t.test(x = iris$Petal.Length[iris$Species=="versicolor"],y= iris$Petal.Width[iris$Species=="virginica"], conf.level = 0.9)
+  tt
+  t_value <- tt[[1]]
+  p_value <- tt[[3]]
+  sort(c(median(iris$Sepal.Width[iris$Species=="versicolor"]),median(iris$Sepal.Width[iris$Species=="virginica"])), decreasing = FALSE)[1]
 }
