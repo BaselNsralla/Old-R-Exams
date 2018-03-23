@@ -67,3 +67,29 @@ q3_c <- function () {
   iii <- floor(days(second_date - poland_date)@day / 7)
   iv <- as.period(interval(vote_right_date, todays_date), unit = 'month')
 }
+
+
+my_curve(x= c(-1,0,1,2,4.5), a= 5)
+my_curve <- function (x, a=3) {
+  m <- sapply(x, FUN=function(num){
+    if (num <= -2) {
+      return(4)
+    } else if(x > -2 && x < 1) {
+      return(num^2)
+    } else {
+      return(6-(a*num))
+    }
+  }, simplify=TRUE)
+  return(m)
+}
+
+curve(expr= my_curve, from = -3, to = 3)
+
+my_var <- function (x) {
+  sum <- 0
+  m <- mean(x)
+  for (i in x) {
+    sum <- sum + (i-m)^2
+  }
+  return(sum)
+}
