@@ -5,7 +5,6 @@ q1_a <- function () {
   r <- round((1 - cos(pi*2.3))^(1-sqrt(7)), 4)
 }
 
-
 q1_b <- function() {
   data(iris)
   data(AirPassengers)
@@ -27,8 +26,6 @@ q1_d <- function () {
   data.frame(Sepal.Length = iris$Sepal.Length[indecies], Petal.Length = iris$Petal.Length[indecies], Species = iris$Species[indecies])
 }
 
-
-
 q2_a <- function () {
   X <- matrix(0, nrow= 3, ncol= 4)
   for (i in 1:nrow(X)) {
@@ -49,7 +46,6 @@ q2_b <- function() {
     r <- r+1
   }
 }
-
 
 q3_b <- function() {
   file_path <- paste0(getwd(),'/Dev/R/old_r_exams/2017_08_14/robot.txt')

@@ -1,6 +1,6 @@
 library('dplyr')
 library('stringr')
-library('lubridate')
+library('ggplot2')
 q1_a_b_c <- function () {
   name <- c('Kalle', 'Jane', 'Andrej', 'Lisa', 'Kim')
   analysis <- c(9, 19, 6, 8, 11)
@@ -8,7 +8,6 @@ q1_a_b_c <- function () {
   sex <- c('Male', 'Female', 'Male', 'Female', 'Female')
   studenter <- data.frame(name, analysis, sociology, sex)
 
-  
   # Find people who passed
   index_calc <- studenter$analysis >= 10
   index_calc
@@ -41,8 +40,6 @@ q2_a <- function() {
   }
   print(x)
 }
-
-
 
 q3_a_b_c <- function () {
   born <- ymd('1412/01/06')
@@ -81,4 +78,6 @@ my_rexp <- function (n ,rate){
   print(TT)
   return(TT)
 }
-hist(my_rexp(1000, 0.1))
+hist(my_rexp(1000, 0.1), freq = FALSE)
+dat <- data.frame(t=my_rexp(1000, 0.1))
+ggplot(dat, aes(x=t)) + geom_histogram(aes(fill='red'))

@@ -52,7 +52,6 @@ q2_b <- function() {
   }
 }
 
-
 q3_b <- function () {
   file_path <- paste0(getwd(),'/Dev/R/old_r_exams/2017_08_14/robot.txt')
   robot_txt <- readLines(con=file_path)
