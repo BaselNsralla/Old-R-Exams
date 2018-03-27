@@ -80,9 +80,13 @@ q5 <- function() {
   data(CO2)
   randoms <- rt(250, 7, 12)
   ggplot(CO2, aes(x = conc, y =uptake)) + geom_point(aes(color=Treatment))
-  df <- as.data.frame(read.table('https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/OldExams/20160615/HUS_eng.txt', header=TRUE,sep=',', dec="."))
+  df <- as.data.frame(read.table('https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/OldExams/20160615/HUS_eng.txt', header=TRUE, sep=',', dec="."))
   df
-  ggplot(df, aes(x=no.bedroom, y=air.condition)) + geom_bar(stat='identity') 
+  ggplot(df, aes(x=no.bedroom, y=air.conditioning)) + geom_bar(stat='identity') 
+  index <- df$no.bedroom <= 3 & df$no.bedroom <=5
+  sd(df$price[index])
+  ?geom_histogram()
+  ggplot(df, aes(x=living.area)) + geom_histogram(aes(y=1000*..density..),stat='bin')
 }
 
 
